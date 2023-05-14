@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function New({ AddTask }) {
+function New({ addTask }) {
 
     const navigate = useNavigate();
 
@@ -15,7 +15,9 @@ function New({ AddTask }) {
 
         const content = event.target.content.value;
 
-        AddTask({ period, resp, content });
+        addTask({ period, resp, content });
+
+        navigate("/");
 
     }
 

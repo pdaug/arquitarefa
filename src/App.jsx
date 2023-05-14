@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard.jsx";
@@ -9,7 +9,13 @@ function App() {
 
   const [ tasks, setTasks ] = useState([]);
 
-  function AddTask({ period, resp, content }) {
+  useEffect(function() {
+
+    console.log(tasks)
+
+  }, [ tasks ])
+
+  function addTask({ period, resp, content }) {
         
     const id = crypto.randomUUID(); 
 
@@ -55,9 +61,9 @@ function App() {
 
       <Route path="/" element={ <Dashboard/> } updateTask={ updateTask } deleteTask={ deleteTask } tasks={ tasks }>
 
-        <Route path="new" element={ <New/> } AddTask={ AddTask }/>
+        <Route path="new" element={ <New addTask={ addTask }/> }/>
 
-        <Route path="edit" element={ <Edit/> } AddTask={ AddTask }/>
+        <Route path="edit" element={ <Edit/> }/>
 
       </Route>
 

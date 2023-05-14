@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate  } from "react-router-dom";
 
 import Section from "../components/Section/index.jsx";
 import Card from "../components/Cards/index.jsx";
@@ -52,7 +52,7 @@ function Dashboard({ tasks, updateTask, deleteTask }) {
 
                 <Section title="Dia" icon="ph-bold ph-lightning" updateTask={ updateTask }> 
 
-                    { tasks &&
+                    { 
                         tasks.map(task => task.period === "Dia" && <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>)
                     }
 
@@ -60,7 +60,7 @@ function Dashboard({ tasks, updateTask, deleteTask }) {
 
                 <Section title="Semana" icon="ph-bold ph-clock" updateTask={ updateTask }>
 
-                    { tasks &&
+                    {
                         tasks.map(task => task.period === "Semana" && <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>)
                     }
 
@@ -68,7 +68,7 @@ function Dashboard({ tasks, updateTask, deleteTask }) {
 
                 <Section title="Mês" icon="ph-bold ph-calendar-blank" updateTask={ updateTask }>
 
-                    { tasks &&
+                    { 
                         tasks.map(task => task.period === "Mês" && <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>)
                     }
 
