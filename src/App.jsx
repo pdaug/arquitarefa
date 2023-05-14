@@ -13,7 +13,7 @@ function App() {
 
     console.log(tasks)
 
-  }, [ tasks ])
+  }, [tasks])
 
   function addTask({ period, resp, content }) {
         
@@ -29,15 +29,33 @@ function App() {
         
   }
 
-  function updateTask({ id, period }) {
+  function editTask({ id, content }) {
 
     const index = tasks.findIndex(value => value.id === id);
 
     const newTasks = [ ...tasks ];
 
-    newTasks[index]["period"] = period;
+    newTasks[index]["content"] = content;
 
     setTasks(newTasks);
+
+  }
+
+  function updateTask({ id, period }) {
+
+    const index = tasks.findIndex(value => value.id === id);
+
+    //const result = confirm(`Deseja alterar o periodo da tarefa?`);
+
+    //if (result) {
+
+      const newTasks = [ ...tasks ];
+
+      newTasks[index]["period"] = period;
+
+      setTasks(newTasks);
+
+    //}   
 
   }
 
@@ -45,13 +63,19 @@ function App() {
 
     const index = tasks.findIndex(value => value.id === id);
 
-    const newTasks = [ ...tasks ];
-    
-    if (index > -1)
+    const result = confirm(`Deseja concluir a tarefa?`);
 
-      newTasks.splice(index, 1);
+    if (result) {
 
-    setTasks(newTasks);
+      const newTasks = [ ...tasks ];
+      
+      if (index > -1)
+
+        newTasks.splice(index, 1);
+
+      setTasks(newTasks);
+
+    }
 
   }
 
@@ -59,11 +83,11 @@ function App() {
 
     <Routes>
 
-      <Route path="/" element={ <Dashboard/> } updateTask={ updateTask } deleteTask={ deleteTask } tasks={ tasks }>
+      <Route path="/" element={ <Dashboard updateTask={ updateTask } deleteTask={ deleteTask } tasks={ tasks }/> }>
 
         <Route path="new" element={ <New addTask={ addTask }/> }/>
 
-        <Route path="edit" element={ <Edit/> }/>
+        <Route path="edit/:id" element={ <Edit editTask={ editTask }/> }/>
 
       </Route>
 

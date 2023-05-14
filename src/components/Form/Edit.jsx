@@ -1,11 +1,21 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function Edit() {
+function Edit({ editTask }) {
 
     const navigate = useNavigate();
 
-    function EditTask() {
+    const { id } = useParams();
+
+    function Submit(event) {
+
+        event.preventDefault();
+
+        const content = event.target.content.value;
+
+        editTask({ id, content });
+
+        navigate("/");
 
     }
 
@@ -21,13 +31,22 @@ function Edit() {
                 
             </div>
 
-            <form className="flex flex-col gap-4" onSubmit={ EditTask }>
+            <form className="flex flex-col gap-4" onSubmit={ Submit }>
+
+                <input 
+                    className="bg-gray-100 p-2 text-sm rounded" 
+                    type="text" 
+                    name="id"
+                    value={ id }
+                    minLength={ 1 }
+                    maxLength={ 80 }
+                    required/>
 
                 <textarea 
                     className="bg-gray-100 p-2 text-sm resize-none rounded" 
                     type="text" 
                     name="content"
-                    placeholder="Conteúdo" 
+                    placeholder="Digite o conteúdo da tarefa..." 
                     minLength={ 1 }
                     maxLength={ 255 }
                     autoComplete="false"
@@ -37,7 +56,7 @@ function Edit() {
     
                 <div className="flex justify-center gap-4">
 
-                    <button type="submit" className="flex items-center gap-2 bg-gray-800 text-white text-sm py-1 px-4 rounded"> 
+                    <button type="submit" className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white text-sm py-1 px-4 rounded"> 
                     
                         <i className="ph-bold ph-pencil-simple"></i>
 
@@ -45,9 +64,9 @@ function Edit() {
                     
                     </button>
 
-                    <button type="button" onClick={ () => navigate("/") } className="bg-gray-100 text-sm py-1 px-4 rounded"> 
+                    <button type="button" onClick={ () => navigate("/") } className="bg-gray-100 hover:bg-gray-200 text-sm py-1 px-4 rounded"> 
 
-                        <span> Voltar </span> 
+                        <span> Cancelar </span> 
                     
                     </button>
 

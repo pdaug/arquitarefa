@@ -71,7 +71,7 @@ function New({ addTask }) {
     
                 <div className="flex justify-center gap-4">
 
-                    <button type="submit" className="flex items-center gap-2 bg-gray-800 text-white text-sm py-1 px-4 rounded"> 
+                    <button type="submit" className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white text-sm py-1 px-4 rounded"> 
                     
                         <i className="ph-bold ph-check"></i>
 
@@ -79,7 +79,7 @@ function New({ addTask }) {
                     
                     </button>
 
-                    <button type="button" onClick={ () => navigate("/") } className="bg-gray-100 text-sm py-1 px-4 rounded"> 
+                    <button type="button" onClick={ () => navigate("/") } className="bg-gray-100 hover:bg-gray-200 text-sm py-1 px-4 rounded"> 
 
                         <span> Voltar </span> 
                     

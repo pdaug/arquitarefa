@@ -20,19 +20,15 @@ function Dashboard({ tasks, updateTask, deleteTask }) {
 
                 <div className="flex gap-4">
 
-                    <button className="flex items-center gap-2 bg-gray-800 text-white text-sm py-1 px-4 rounded shadow"> 
-                        
-                        <i className="ph-bold ph-trash-simple"></i>
-                    
-                    </button>
-
-                    <button className="flex items-center gap-2 bg-gray-800 text-white text-sm py-1 px-4 rounded shadow"> 
+                    <button className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white text-sm py-1 px-4 rounded shadow" onClick={ () => location.reload() }> 
                         
                         <i className="ph-bold ph-arrow-clockwise"></i>
+
+                        <span> Sincronizar </span>  
                     
                     </button>
 
-                    <button onClick={ () => navigate("/new") } className="flex items-center gap-2 bg-gray-800 text-white text-sm py-1 px-4 rounded shadow"> 
+                    <button onClick={ () => navigate("/new") } className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white text-sm py-1 px-4 rounded shadow"> 
                     
                         <i className="ph-bold ph-plus"></i>
 

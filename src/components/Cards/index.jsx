@@ -1,18 +1,29 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Card(props) {
+
+    const navigate = useNavigate();
 
     function Drag(event) {
 
         const id = event.target.id;
 
+        event.target.style.border = "2px dashed #888";
+
         event.dataTransfer.setData("card", id);
 
     }
 
-    return <div onDragStart={ Drag } id={ props.task.id } draggable>
+    function DragOff(event) {
 
-        <div className="flex flex-col bg-gray-100 p-2 gap-2 rounded">
+        event.target.style.border = "none";
+
+    }
+
+    return <div onDragStart={ Drag } id={ props.task.id } onDragEnd={ DragOff } draggable>
+
+        <div className="group flex flex-col bg-gray-100 p-2 gap-2 rounded">
 
             <div className="text-justify"> { props.task.content } </div>
             
@@ -34,13 +45,25 @@ function Card(props) {
                     
                 </div>
 
-                <div className="flex items-center gap-2 text-xs"> 
+            </div>
+
+            <div className="group-hover:opacity-100 opacity-0 flex justify-end gap-4 transition">
+
+                <div className="cursor-pointer flex items-center gap-2 text-xs"> 
 
                     <a draggable={ false } onClick={ () => props.deleteTask({ id: props.task.id }) }>
 
-                        <i className="ph-bold ph-check-fat"></i>
-
                         <span> Concluir </span> 
+
+                    </a>
+                    
+                </div>
+
+                <div className="cursor-pointer flex items-center gap-2 text-xs"> 
+
+                    <a draggable={ false } onClick={ () => navigate(`/edit/${ props.task.id }`) }>
+
+                        <span> Editar </span> 
 
                     </a>
                     
