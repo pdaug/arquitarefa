@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard.jsx";
-import New from "./components/Form/New.jsx";
-import Edit from "./components/Form/Edit.jsx";
+import Add from "./pages/Add.jsx";
+import Edit from "./pages/Edit.jsx";
 
 function App() {
 
   const [ tasks, setTasks ] = useState([]);
-
-  useEffect(function() {
-
-    console.log(tasks)
-
-  }, [tasks])
 
   function addTask({ period, resp, content }) {
         
@@ -21,7 +15,7 @@ function App() {
 
     const locale = "pt-BR";
 
-    const options = { day: "2-digit", month: "long", year: "numeric" };
+    const options = { day: "2-digit", month: "long" };
 
     const date = new Date().toLocaleDateString(locale, options);
         
@@ -85,7 +79,7 @@ function App() {
 
       <Route path="/" element={ <Dashboard updateTask={ updateTask } deleteTask={ deleteTask } tasks={ tasks }/> }>
 
-        <Route path="new" element={ <New addTask={ addTask }/> }/>
+        <Route path="add" element={ <Add addTask={ addTask }/> }/>
 
         <Route path="edit/:id" element={ <Edit editTask={ editTask }/> }/>
 

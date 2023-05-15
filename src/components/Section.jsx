@@ -20,7 +20,7 @@ function Section(props) {
 
     }
 
-    return <div className="flex flex-col flex-1 bg-white p-4 gap-4 shadow rounded">
+    return <div className="bg-white flex flex-col flex-1 p-4 gap-4">
             
         <div className="flex items-center justify-center gap-2"> 
         
