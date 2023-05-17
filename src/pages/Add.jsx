@@ -21,7 +21,7 @@ function Add({ addTask }) {
 
         const describe = event.target.describe.value;
 
-        addTask({ category, executor, describe });
+        addTask({ category, executor, describe }).then(result => console.log(result)).catch(console.error);
 
         navigate("/");
 

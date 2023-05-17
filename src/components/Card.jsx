@@ -15,7 +15,7 @@ function Card(props) {
 
     function openDeleteTask() {
 
-        props.deleteTask({ _id: props.task._id })
+        props.deleteTask({ _id: props.task._id }).then(result => console.log(result)).catch(console.error);
 
     }
 

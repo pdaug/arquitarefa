@@ -19,7 +19,7 @@ function Edit({ editTask }) {
 
         const content = event.target.content.value;
 
-        editTask({ id, content });
+        editTask({ id, content }).then(result => console.log(result)).catch(console.error);
 
         navigate("/");
 
