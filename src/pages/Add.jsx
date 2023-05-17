@@ -15,13 +15,13 @@ function Add({ addTask }) {
 
         event.preventDefault();
 
-        const period = event.target.period.value;
+        const category = event.target.category.value;
 
-        const resp = event.target.resp.value;
+        const executor = event.target.executor.value;
 
-        const content = event.target.content.value;
+        const describe = event.target.describe.value;
 
-        addTask({ period, resp, content });
+        addTask({ category, executor, describe });
 
         navigate("/");
 
@@ -41,19 +41,19 @@ function Add({ addTask }) {
 
             <form className="flex flex-col gap-4 w-[360px]" onSubmit={ submitAddTask }>
 
-                <select name="period" className="bg-gray-100 p-2 text-sm" required>
+                <select name="category" className="bg-gray-100 p-2 text-sm" required>
 
-                    <option value="Dia"> Para hoje </option>
+                    <option value="1"> Para hoje </option>
 
-                    <option value="Semana"> Esta semana </option>
+                    <option value="2"> Esta semana </option>
 
-                    <option value="Mês"> Este mês </option>
+                    <option value="3"> Este mês </option>
 
                 </select>
 
-                <input className="bg-gray-100 p-2 text-sm" type="text" name="resp" placeholder="Responsável" minLength={ 1 } maxLength={ 32 } required/>
+                <input className="bg-gray-100 p-2 text-sm" type="text" name="executor" placeholder="Executor" minLength={ 1 } maxLength={ 32 } required/>
 
-                <textarea className="bg-gray-100 p-2 text-sm resize-none" type="text" name="content" placeholder="Digite aqui uma breve descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
+                <textarea className="bg-gray-100 p-2 text-sm resize-none" type="text" name="describe" placeholder="Digite aqui uma breve descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
     
                 <div className="flex justify-center gap-4">
 

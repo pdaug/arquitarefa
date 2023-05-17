@@ -1,77 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard.jsx";
 import Add from "./pages/Add.jsx";
 import Edit from "./pages/Edit.jsx";
 
+import getTasks from "./functions/getTasks.jsx";
+import addTask from "./functions/addTask.jsx";
+import updateTask from "./functions/updateTask.jsx";
+import deleteTask from "./functions/deleteTask.jsx";
+import editTask from "./functions/editTask.jsx";
+
 function App() {
 
   const [ tasks, setTasks ] = useState([]);
 
-  function addTask({ period, resp, content }) {
-        
-    const id = crypto.randomUUID(); 
+  useEffect(() => {
 
-    const locale = "pt-BR";
+    getTasks()
 
-    const options = { day: "2-digit", month: "long" };
+      .then((result) => setTasks(result.data))
 
-    const date = new Date().toLocaleDateString(locale, options);
-        
-    setTasks([ ...tasks, { id, period, resp, content, date }]);
-        
-  }
+      .catch(console.error);
 
-  function editTask({ id, content }) {
-
-    const index = tasks.findIndex(value => value.id === id);
-
-    const newTasks = [ ...tasks ];
-
-    newTasks[index]["content"] = content;
-
-    setTasks(newTasks);
-
-  }
-
-  function updateTask({ id, period }) {
-
-    const index = tasks.findIndex(value => value.id === id);
-
-    //const result = confirm(`Deseja alterar o periodo da tarefa?`);
-
-    //if (result) {
-
-      const newTasks = [ ...tasks ];
-
-      newTasks[index]["period"] = period;
-
-      setTasks(newTasks);
-
-    //}   
-
-  }
-
-  function deleteTask({ id }) {
-
-    const index = tasks.findIndex(value => value.id === id);
-
-    const result = confirm(`Deseja concluir a tarefa?`);
-
-    if (result) {
-
-      const newTasks = [ ...tasks ];
-      
-      if (index > -1)
-
-        newTasks.splice(index, 1);
-
-      setTasks(newTasks);
-
-    }
-
-  }
+  }, []);
 
   return <BrowserRouter>
 

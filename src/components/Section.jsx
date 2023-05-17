@@ -12,11 +12,19 @@ function Section(props) {
 
         event.preventDefault();
 
-        const id = event.dataTransfer.getData("card");
+        const _id = event.dataTransfer.getData("card");
+
+        let category = 1;
+
+        if (props.title === "Dia") category = 1;
+
+        else if (props.title === "Semana") category = 2;
+        
+        else if (props.title === "Mês") category = 3;
 
         if (event.target.id === "section") 
 
-            props.updateTask({ id, period: props.title });
+            props.updateTask({ _id, category });
 
     }
 

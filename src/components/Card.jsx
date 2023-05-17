@@ -7,7 +7,7 @@ function Card(props) {
 
     function openEditTask() {
 
-        const url = "/edit/" + props.task.id;
+        const url = "/edit/" + props.task._id;
 
         navigate(url);
 
@@ -15,36 +15,35 @@ function Card(props) {
 
     function openDeleteTask() {
 
-        props.deleteTask({ id: props.task.id })
+        props.deleteTask({ _id: props.task._id })
 
     }
 
     function Drag(event) {
 
-        const id = event.target.id;
+        const _id = event.target.id;
 
-        event.dataTransfer.setData("card", id);
+        event.dataTransfer.setData("card", _id);
 
     }
 
-
-    return <div onDragStart={ Drag } id={ props.task.id } onDoubleClick={ openEditTask } draggable>
+    return <div onDragStart={ Drag } id={ props.task._id } onDoubleClick={ openEditTask } draggable>
 
         <div className="flex flex-col bg-gray-100 p-2 gap-2">
 
-            <div className="text-justify"> { props.task.content } </div>
+            <div className="text-justify"> { props.task.describe } </div>
             
             <div className="flex text-gray-500 text-xs gap-2">
 
-                <span> { props.task.resp } </span>
+                <span> { props.task.executor } </span>
 
                 <span> &bull; </span>
 
-                <span> { props.task.date } </span> 
+                <span> { new Date(props.task.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }) } </span> 
 
                 <span> &bull; </span>
 
-                <span> { props.task.period } </span> 
+                <span> { props.task.category } </span> 
 
             </div>
 

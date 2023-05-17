@@ -20,7 +20,9 @@ function Dashboard({ tasks, updateTask, deleteTask }) {
                 <Section title="Dia" icon="ph ph-lightning" updateTask={ updateTask }> 
 
                     { 
-                        tasks.map(task => task.period === "Dia" && <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>)
+                        tasks.map(task => 
+                            task.category === 1 && 
+                                <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>)
                     }
 
                 </Section>
@@ -28,7 +30,9 @@ function Dashboard({ tasks, updateTask, deleteTask }) {
                 <Section title="Semana" icon="ph ph-clock" updateTask={ updateTask }>
 
                     {
-                        tasks.map(task => task.period === "Semana" && <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>)
+                        tasks.map(task => 
+                            task.category === 2 && 
+                                <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>)
                     }
 
                 </Section>
@@ -36,12 +40,12 @@ function Dashboard({ tasks, updateTask, deleteTask }) {
                 <Section title="Mês" icon="ph ph-calendar-blank" updateTask={ updateTask }>
 
                     { 
-                        tasks.map(task => task.period === "Mês" && <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>)
+                        tasks.map(task => 
+                            task.category === 3 && 
+                                <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>)
                     }
 
                 </Section>
-
-            
 
             </div>
 
