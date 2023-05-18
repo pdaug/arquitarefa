@@ -15,13 +15,13 @@ function Add({ addTask }) {
 
         event.preventDefault();
 
-        const category = event.target.category.value;
+        const category = parseInt(event.target.category.value);
 
         const executor = event.target.executor.value;
 
         const describe = event.target.describe.value;
 
-        addTask({ category, executor, describe }).then(result => console.log(result)).catch(console.error);
+        addTask({ category, executor, describe }).then(result => { console.log(result); window.location.reload(); }).catch(console.error);
 
         navigate("/");
 

@@ -5,6 +5,16 @@ function Card(props) {
 
     const navigate = useNavigate();
 
+    function getCategoryName(category) {
+
+        if (category === 1) return "Dia";
+
+        else if (category === 2) return "Semana";
+
+        else if (category === 3) return "Mês";
+        
+    }
+
     function openEditTask() {
 
         const url = "/edit/" + props.task._id;
@@ -15,7 +25,7 @@ function Card(props) {
 
     function openDeleteTask() {
 
-        props.deleteTask({ _id: props.task._id }).then(result => console.log(result)).catch(console.error);
+        props.deleteTask({ _id: props.task._id }).then(result => { console.log(result); window.location.reload(); }).catch(console.error);
 
     }
 
@@ -43,7 +53,7 @@ function Card(props) {
 
                 <span> &bull; </span>
 
-                <span> { props.task.category } </span> 
+                <span> { getCategoryName(props.task.category) } </span> 
 
             </div>
 

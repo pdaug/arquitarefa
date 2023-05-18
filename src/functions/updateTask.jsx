@@ -6,7 +6,7 @@ function updateTask({ _id, category }) {
 
         method: "PUT",
 
-        url: "http://arquitarefa-api.vercel.app/api",
+        url: "https://arquitarefa-api.vercel.app/api",
 
         data: {
 

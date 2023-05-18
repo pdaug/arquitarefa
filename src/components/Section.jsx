@@ -24,7 +24,7 @@ function Section(props) {
 
         if (event.target.id === "section") 
 
-            props.updateTask({ _id, category }).then(result => console.log(result)).catch(console.error);
+            props.updateTask({ _id, category }).then(result => { console.log(result); window.location.reload(); }).catch(console.error);
 
     }
 

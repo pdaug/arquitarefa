@@ -17,9 +17,9 @@ function Edit({ editTask }) {
 
         event.preventDefault();
 
-        const content = event.target.content.value;
+        const describe = event.target.describe.value;
 
-        editTask({ id, content }).then(result => console.log(result)).catch(console.error);
+        editTask({ _id: id, describe }).then(result => { console.log(result); window.location.reload(); }).catch(console.error);
 
         navigate("/");
 
@@ -39,7 +39,7 @@ function Edit({ editTask }) {
 
             <form className="flex flex-col gap-4 w-[360px]" onSubmit={ submitEditTask }>
 
-                <textarea className="bg-gray-100 p-2 text-sm resize-none" type="text" name="content" placeholder="Edite aqui a descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
+                <textarea className="bg-gray-100 p-2 text-sm resize-none" type="text" name="describe" placeholder="Edite aqui a descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
     
                 <div className="flex justify-center gap-4">
 
