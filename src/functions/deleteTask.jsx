@@ -2,7 +2,7 @@ import axios from "axios";
 
 import api from "../constants/api.jsx";
 
-async function deleteTask({ _id }) {
+async function deleteTask({ _id, equip }) {
 
     const answer = confirm("Deseja concluir a segunte tarefa?");
 
@@ -12,7 +12,7 @@ async function deleteTask({ _id }) {
 
             method: "DELETE",
 
-            url: api,
+            url: api + equip,
 
             data: {
 

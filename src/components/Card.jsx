@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import deleteTask from "../functions/deleteTask.jsx";
 import { Drag } from "../functions/drag.jsx";
@@ -7,9 +7,11 @@ import { categoryToString } from "../functions/categoryConverter.jsx";
 
 function Card(props) {
 
+    const { equip } = useParams();
+
     const navigate = useNavigate();
 
-    const editURL = "/edit/" + props.task._id;
+    const editURL = "./edit/" + props.task._id;
 
     return <div onDragStart={ Drag } id={ props.task._id } onDoubleClick={ () => navigate(editURL) } draggable>
 
@@ -33,7 +35,7 @@ function Card(props) {
 
             <div className="flex text-gray-500 text-xs gap-2">
 
-                <span className="cursor-pointer" onClick={ async () => await deleteTask({ _id: props.task._id }) }> Concluir </span>
+                <span className="cursor-pointer" onClick={ async () => await deleteTask({ _id: props.task._id, equip }) }> Concluir </span>
 
                 <span className="cursor-pointer" onClick={ () => navigate(editURL) }> Editar </span> 
 

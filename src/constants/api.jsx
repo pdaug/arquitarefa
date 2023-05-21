@@ -1,3 +1,3 @@
-const api = "https://arquitarefa-api.vercel.app/api"
+const api = "https://arquitarefa-api.vercel.app/api/"
 
 export default api;

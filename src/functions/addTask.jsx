@@ -2,13 +2,13 @@ import axios from "axios";
 
 import api from "../constants/api.jsx";
 
-async function addTask({ category, executor, describe }) {
+async function addTask({ category, executor, describe, equip }) {
 
     const result = await axios({
 
         method: "POST",
 
-        url: api,
+        url: api + equip,
 
         data: {
 

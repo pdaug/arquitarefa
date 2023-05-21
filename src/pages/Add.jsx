@@ -1,29 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Modal from "../components/Modal.jsx";
-import addTask from "../functions/addTask.jsx";
-import { categoryToNumber } from "../functions/categoryConverter.jsx";
+import { submitAddTask } from "../functions/submits.jsx";
 
 function Add() {
 
     const navigate = useNavigate();
 
-    async function submitAddTask(event) {
-
-        event.preventDefault();
-
-        const category = event.target.category.value;
-
-        const executor = event.target.executor.value;
-
-        const describe = event.target.describe.value;
-
-        await addTask({ category: categoryToNumber({ string: category }), executor, describe });
-
-        navigate("/");
-
-    }
+    const { equip } = useParams();
 
     const header = <>
 
@@ -33,7 +18,7 @@ function Add() {
     
     </>;
 
-    const content = <form className="flex flex-col gap-4 w-[360px]" onSubmit={ submitAddTask }>
+    const content = <form className="flex flex-col gap-4 w-[360px]" onSubmit={ (event) => submitAddTask({ event, navigate, equip }) }>
 
         <select name="category" className="bg-gray-100 p-2 text-sm" required>
 
@@ -57,7 +42,7 @@ function Add() {
             
             </button>
 
-            <button type="button" onClick={ () => navigate("/") } className="bg-gray-100 text-sm py-1 px-4"> 
+            <button type="button" onClick={ () => navigate(-1) } className="bg-gray-100 text-sm py-1 px-4"> 
 
                 <span> Voltar </span> 
             

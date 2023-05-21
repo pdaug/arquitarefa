@@ -1,14 +1,13 @@
 import axios from "axios";
-
 import api from "../constants/api.jsx";
 
-async function editTask({ _id, describe }) {
-
+async function editTask({ _id, describe, equip }) {
+    
     const result = await axios({
 
         method: "PATCH",
 
-        url: api,
+        url: api + equip,
 
         data: {
 

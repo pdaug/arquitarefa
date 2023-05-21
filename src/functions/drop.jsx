@@ -7,7 +7,7 @@ function AllowDrop(event) {
 
 }
 
-async function Drop({ event, title }) {
+async function DropUpdate({ event, title, equip }) {
 
     event.preventDefault();
 
@@ -15,13 +15,29 @@ async function Drop({ event, title }) {
 
     if (event.target.id === "section") 
 
-        await updateTask({ _id, category: categoryToNumber({ string: title }) });
+        await updateTask({ _id, category: categoryToNumber({ string: title }), equip });
+
+}
+
+async function Drop(event) {
+
+    event.preventDefault();
+
+    const _id = event.dataTransfer.getData("card");
+
+    const Card = document.getElementById(_id);
+
+    if (event.target.id === "section") 
+
+        event.target.appendChild(Card);
 
 }
 
 export {
 
     AllowDrop,
+
+    DropUpdate,
 
     Drop
 
