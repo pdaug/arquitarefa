@@ -1,12 +1,14 @@
 import axios from "axios";
 
-function editTask({ _id, describe }) {
+import api from "../constants/api.jsx";
 
-    return axios({
+async function editTask({ _id, describe }) {
+
+    const result = await axios({
 
         method: "PATCH",
 
-        url: "https://arquitarefa-api.vercel.app/api",
+        url: api,
 
         data: {
 
@@ -17,6 +19,10 @@ function editTask({ _id, describe }) {
         },
 
     });
+
+    console.log(result.data);
+   
+    window.location.reload();
 
 }
 

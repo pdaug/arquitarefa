@@ -1,81 +1,73 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Add({ addTask }) {
+import Modal from "../components/Modal.jsx";
+import addTask from "../functions/addTask.jsx";
+import { categoryToNumber } from "../functions/categoryConverter.jsx";
+
+function Add() {
 
     const navigate = useNavigate();
 
-    function back() {
-
-        navigate("/");
-
-    }
-
-    function submitAddTask(event) {
+    async function submitAddTask(event) {
 
         event.preventDefault();
 
-        const category = parseInt(event.target.category.value);
+        const category = event.target.category.value;
 
         const executor = event.target.executor.value;
 
         const describe = event.target.describe.value;
 
-        addTask({ category, executor, describe }).then(result => { console.log(result); window.location.reload(); }).catch(console.error);
+        await addTask({ category: categoryToNumber({ string: category }), executor, describe });
 
         navigate("/");
 
     }
 
-    return <div className="bg-[#6666] absolute top-0 left-0 flex items-center justify-center w-full h-screen">
+    const header = <>
 
-        <div className="bg-white flex flex-col gap-4 p-4">
+        <i className="ph ph-check-square-offset"></i>
 
-            <div className="flex gap-2 items-center justify-center"> 
-
-                <i className="ph ph-check-square-offset"></i>
-
-                <span> Adicionar tarefa </span> 
-
-            </div>
-
-            <form className="flex flex-col gap-4 w-[360px]" onSubmit={ submitAddTask }>
-
-                <select name="category" className="bg-gray-100 p-2 text-sm" required>
-
-                    <option value="1"> Para hoje </option>
-
-                    <option value="2"> Esta semana </option>
-
-                    <option value="3"> Este mês </option>
-
-                </select>
-
-                <input className="bg-gray-100 p-2 text-sm" type="text" name="executor" placeholder="Executor" minLength={ 1 } maxLength={ 32 } required/>
-
-                <textarea className="bg-gray-100 p-2 text-sm resize-none" type="text" name="describe" placeholder="Digite aqui uma breve descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
+        <span> Adicionar tarefa </span> 
     
-                <div className="flex justify-center gap-4">
+    </>;
 
-                    <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-1 px-4"> 
-                    
-                        <span> Adicionar </span>  
-                    
-                    </button>
+    const content = <form className="flex flex-col gap-4 w-[360px]" onSubmit={ submitAddTask }>
 
-                    <button type="button" onClick={ back } className="bg-gray-100 text-sm py-1 px-4"> 
+        <select name="category" className="bg-gray-100 p-2 text-sm" required>
 
-                        <span> Voltar </span> 
-                    
-                    </button>
+            <option value="Dia"> Para hoje </option>
 
-                </div>
+            <option value="Semana"> Esta semana </option>
 
-            </form>
+            <option value="Mês"> Este mês </option>
+
+        </select>
+
+        <input className="bg-gray-100 p-2 text-sm" type="text" name="executor" placeholder="Executor" minLength={ 1 } maxLength={ 32 } required/>
+
+        <textarea className="bg-gray-100 p-2 text-sm resize-none" type="text" name="describe" placeholder="Digite aqui uma breve descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
+
+        <div className="flex justify-center gap-4">
+
+            <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-1 px-4"> 
+            
+                <span> Adicionar </span>  
+            
+            </button>
+
+            <button type="button" onClick={ () => navigate("/") } className="bg-gray-100 text-sm py-1 px-4"> 
+
+                <span> Voltar </span> 
+            
+            </button>
 
         </div>
 
-    </div>
+    </form>;
+
+    return <Modal header={ header } content={ content }/>
 
 }
 

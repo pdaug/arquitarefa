@@ -4,8 +4,14 @@ import { Outlet } from "react-router-dom";
 import Section from "../components/Section.jsx";
 import Card from "../components/Card.jsx";
 import Nav from "../components/Nav.jsx";
+import Skeleton from "../components/Skeleton.jsx";
 
-function Dashboard({ tasks, updateTask, deleteTask }) {
+import getTasks from "../functions/getTasks.jsx";
+import sections from "../constants/sections.jsx";
+
+function Dashboard() {
+
+    const { tasks, loaded } = getTasks();
 
     return <>
 
@@ -13,61 +19,46 @@ function Dashboard({ tasks, updateTask, deleteTask }) {
 
         <Nav/>
 
-        <div className="container my-4 mx-auto text-gray-800">
+        { loaded ?
 
-            <div className="flex gap-4 flex-col md:flex-row">
+            <div className="container my-4 mx-auto text-gray-800">
 
-                <Section title="Dia" icon="ph ph-lightning" updateTask={ updateTask }> 
+                <div className="flex gap-4 flex-col md:flex-row">
 
-                    { 
-                    
-                        tasks.map(function(task) {
+                    {
 
-                            if (task.category === 1)
+                        sections.map(function(section) {
 
-                                return <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>
+                            return <Section key={ crypto.randomUUID() } title={ section.title } icon={ section.icon }>
 
-                        })
+                                {
+                                    
+                                    tasks.map(function(task) {
 
-                    }
+                                        if (task.category === section.category)
 
-                </Section>
+                                            return <Card key={ crypto.randomUUID() } task={ task }/>
 
-                <Section title="Semana" icon="ph ph-clock" updateTask={ updateTask }>
+                                    })
 
-                    { 
+                                }
 
-                        tasks.map(function(task) {
-
-                            if (task.category === 2)
-
-                                return <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>
+                            </Section>
 
                         })
 
-                    }
-
-                </Section>
-
-                <Section title="Mês" icon="ph ph-calendar-blank" updateTask={ updateTask }>
-
-                    { 
-
-                        tasks.map(function(task) {
-
-                            if (task.category === 3)
-
-                                return <Card key={ crypto.randomUUID() } task={ task } deleteTask={ deleteTask }/>
-
-                        })
 
                     }
 
-                </Section>
+                </div>
 
             </div>
 
-        </div>
+        :
+
+            <Skeleton/>
+
+        }
 
     </>
 

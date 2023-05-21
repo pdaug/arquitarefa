@@ -1,43 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import deleteTask from "../functions/deleteTask.jsx";
+import { Drag } from "../functions/drag.jsx";
+import { categoryToString } from "../functions/categoryConverter.jsx";
+
 function Card(props) {
 
     const navigate = useNavigate();
 
-    function getCategoryName(category) {
+    const editURL = "/edit/" + props.task._id;
 
-        if (category === 1) return "Dia";
-
-        else if (category === 2) return "Semana";
-
-        else if (category === 3) return "Mês";
-        
-    }
-
-    function openEditTask() {
-
-        const url = "/edit/" + props.task._id;
-
-        navigate(url);
-
-    }
-
-    function openDeleteTask() {
-
-        props.deleteTask({ _id: props.task._id }).then(result => { console.log(result); window.location.reload(); }).catch(console.error);
-
-    }
-
-    function Drag(event) {
-
-        const _id = event.target.id;
-
-        event.dataTransfer.setData("card", _id);
-
-    }
-
-    return <div onDragStart={ Drag } id={ props.task._id } onDoubleClick={ openEditTask } draggable>
+    return <div onDragStart={ Drag } id={ props.task._id } onDoubleClick={ () => navigate(editURL) } draggable>
 
         <div className="flex flex-col bg-gray-100 p-2 gap-2">
 
@@ -53,15 +27,15 @@ function Card(props) {
 
                 <span> &bull; </span>
 
-                <span> { getCategoryName(props.task.category) } </span> 
+                <span> { categoryToString({ number: props.task.category }) } </span> 
 
             </div>
 
             <div className="flex text-gray-500 text-xs gap-2">
 
-                <span className="cursor-pointer" onClick={ openDeleteTask }> Concluir </span>
+                <span className="cursor-pointer" onClick={ async () => await deleteTask({ _id: props.task._id }) }> Concluir </span>
 
-                <span className="cursor-pointer" onClick={ openEditTask }> Editar </span> 
+                <span className="cursor-pointer" onClick={ () => navigate(editURL) }> Editar </span> 
 
             </div>
 

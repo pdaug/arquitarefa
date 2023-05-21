@@ -1,32 +1,8 @@
 import React from "react";
 
+import { AllowDrop, Drop } from "../functions/drop";
+
 function Section(props) {
-
-    function AllowDrop(event) {
-
-        event.preventDefault();
-
-    }
-
-    function Drop(event) {
-
-        event.preventDefault();
-
-        const _id = event.dataTransfer.getData("card");
-
-        let category = 1;
-
-        if (props.title === "Dia") category = 1;
-
-        else if (props.title === "Semana") category = 2;
-        
-        else if (props.title === "Mês") category = 3;
-
-        if (event.target.id === "section") 
-
-            props.updateTask({ _id, category }).then(result => { console.log(result); window.location.reload(); }).catch(console.error);
-
-    }
 
     return <div className="bg-white flex flex-col flex-1 p-4 gap-4">
             
@@ -38,7 +14,7 @@ function Section(props) {
             
         </div>
 
-        <div className="flex flex-col flex-1 gap-4 pb-8" id="section" onDrop={ Drop } onDragOver={ AllowDrop }>
+        <div className="flex flex-col flex-1 gap-4 pb-8" id="section" onDrop={ (event) => Drop({ event, title: props.title }) } onDragOver={ AllowDrop }>
 
             { props.children }
             

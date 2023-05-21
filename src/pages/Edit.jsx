@@ -1,67 +1,62 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function Edit({ editTask }) {
+import editTask from "../functions/editTask.jsx";
+import Modal from "../components/Modal.jsx";
+
+function Edit() {
 
     const navigate = useNavigate();
 
     const { id } = useParams();
 
-    function back() {
-
-        navigate("/");
-
-    }
-
-    function submitEditTask(event) {
+    async function submitEditTask(event) {
 
         event.preventDefault();
 
         const describe = event.target.describe.value;
-
-        editTask({ _id: id, describe }).then(result => { console.log(result); window.location.reload(); }).catch(console.error);
+        
+        await editTask({ _id: id, describe });
 
         navigate("/");
 
     }
 
-    return <div className="bg-[#6666] absolute top-0 left-0 flex items-center justify-center w-full h-screen">
+    const header = (<>
 
-        <div className="bg-white flex flex-col gap-4 p-4">
+        <i className="ph ph-pencil-simple-line"></i>
 
-            <div className="flex gap-2 items-center justify-center"> 
+        <span> Editar tarefa </span> 
 
-                <i className="ph ph-pencil-simple-line"></i>
+    </>);
 
-                <span> Editar tarefa </span> 
+    const content = (<>
+
+        <form className="flex flex-col gap-4 w-[360px]" onSubmit={ submitEditTask }>
+
+            <textarea className="bg-gray-100 p-2 text-sm resize-none" type="text" name="describe" placeholder="Edite aqui a descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
+
+            <div className="flex justify-center gap-4">
+
+                <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-1 px-4"> 
+                
+                    <span> Editar </span>
+                
+                </button>
+
+                <button type="button" onClick={ () => navigate("/") } className="bg-gray-100 text-sm py-1 px-4"> 
+
+                    <span> Cancelar </span> 
+                
+                </button>
 
             </div>
 
-            <form className="flex flex-col gap-4 w-[360px]" onSubmit={ submitEditTask }>
+        </form>
+        
+    </>);
 
-                <textarea className="bg-gray-100 p-2 text-sm resize-none" type="text" name="describe" placeholder="Edite aqui a descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
-    
-                <div className="flex justify-center gap-4">
-
-                    <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-1 px-4"> 
-                    
-                        <span> Editar </span>
-                    
-                    </button>
-
-                    <button type="button" onClick={ back } className="bg-gray-100 text-sm py-1 px-4"> 
-
-                        <span> Cancelar </span> 
-                    
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-    </div>
+    return <Modal header={ header } content={ content }/>
 
 }
 

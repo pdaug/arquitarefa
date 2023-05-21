@@ -1,14 +1,43 @@
 import axios from "axios";
+import { useState, useCallback, useEffect } from "react";
+
+import api from "../constants/api.jsx";
 
 function getTasks() {
 
-    return axios({
+    const [ tasks, setTasks ] = useState([]);
 
-        method: "GET",
+    const [ loaded, setLoaded ] = useState(false);
 
-        url: "https://arquitarefa-api.vercel.app/api",
+    const getRequestTasks = useCallback(async function() {
+
+        const results = await axios({
+
+            method: "GET",
+    
+            url: api,
+            
+        });
+
+        setTasks(results.data);
+
+        setLoaded(true);
+
+    }, []);
+
+    useEffect(function() {
+
+        getRequestTasks();
+
+    }, [ getRequestTasks ]);
+
+    return { 
         
-    });
+        tasks,
+
+        loaded
+    
+    };
 
 }
 

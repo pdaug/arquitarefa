@@ -1,14 +1,18 @@
 import axios from "axios";
 
-function deleteTask({ _id }) {
+import api from "../constants/api.jsx";
 
-    if (confirm("Deseja concluir a segunte tarefa?"))
+async function deleteTask({ _id }) {
 
-        return axios({
+    const answer = confirm("Deseja concluir a segunte tarefa?");
+
+    if (answer) {
+
+        const result = await axios({
 
             method: "DELETE",
 
-            url: "https://arquitarefa-api.vercel.app/api",
+            url: api,
 
             data: {
 
@@ -17,6 +21,12 @@ function deleteTask({ _id }) {
             },
 
         });
+
+        console.log(result.data);
+
+        window.location.reload();
+
+    }
 
 }
 
