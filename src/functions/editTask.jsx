@@ -3,26 +3,36 @@ import api from "../constants/api.jsx";
 
 async function editTask({ _id, describe, equip }) {
     
-    const result = await axios({
+    try {
 
-        method: "PATCH",
+        const result = await axios({
 
-        url: api + equip,
+            method: "PATCH",
+    
+            url: api + equip,
+    
+            data: {
+    
+                _id,
+    
+                describe,
+    
+            },
+    
+        });
+    
+        console.log(result.data);
+       
+        //window.location.reload();
 
-        data: {
+    }
 
-            _id,
+    catch(erro) {
 
-            describe,
+        console.log(erro);
 
-        },
-
-    });
-
-    console.log(result.data);
-   
-    window.location.reload();
-
+    }
+    
 }
 
 export default editTask;

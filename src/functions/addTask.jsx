@@ -4,27 +4,37 @@ import api from "../constants/api.jsx";
 
 async function addTask({ category, executor, describe, equip }) {
 
-    const result = await axios({
+    try {
 
-        method: "POST",
+        const result = await axios({
 
-        url: api + equip,
+            method: "POST",
 
-        data: {
+            url: api + equip,
 
-            category,
+            data: {
 
-            executor,
+                category,
 
-            describe
+                executor,
 
-        },
+                describe
 
-    });
+            },
+
+        });
+
+        //window.location.reload();
+        
+        console.log(result.data);
+
+    }
+    catch(erro) {
+
+        console.log(erro);
+
+    }
     
-    console.log(result.data);
-   
-    window.location.reload();
 
 }
 

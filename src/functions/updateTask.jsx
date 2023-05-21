@@ -4,25 +4,35 @@ import api from "../constants/api.jsx";
 
 async function updateTask({ _id, category, equip }) {
 
-    const result = await axios({
+    try {
 
-        method: "PUT",
+        const result = await axios({
 
-        url: api + equip,
+            method: "PUT",
+    
+            url: api + equip,
+    
+            data: {
+    
+                _id,
+    
+                category,
+    
+            },
+    
+        });
+    
+        console.log(result.data);
+       
+        //window.location.reload();    
 
-        data: {
+    }
 
-            _id,
+    catch(erro) {
 
-            category,
+        console.log(erro);
 
-        },
-
-    });
-
-    console.log(result.data);
-   
-    window.location.reload();
+    }
 
 }
 

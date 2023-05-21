@@ -14,17 +14,31 @@ function getTasks() {
 
     const getRequestTasks = useCallback(async function() {
 
-        const results = await axios({
+        try {
 
-            method: "GET",
-    
-            url: api + equip,
-            
-        });
+            const results = await axios({
 
-        setTasks(results.data);
+                method: "GET",
+        
+                url: api + equip,
+                
+            });
 
-        setLoaded(true);
+            setTasks(results.data);
+
+        }
+
+        catch(erro) {
+
+            console.log(erro);
+
+        }
+
+        finally {
+
+            setLoaded(true);
+
+        }        
 
     }, []);
 

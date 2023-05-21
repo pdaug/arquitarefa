@@ -4,29 +4,40 @@ import api from "../constants/api.jsx";
 
 async function deleteTask({ _id, equip }) {
 
-    const answer = confirm("Deseja concluir a segunte tarefa?");
+    try {
 
-    if (answer) {
+        const answer = confirm("Deseja concluir a segunte tarefa?");
 
-        const result = await axios({
+        if (answer) {
 
-            method: "DELETE",
+            const result = await axios({
 
-            url: api + equip,
+                method: "DELETE",
 
-            data: {
+                url: api + equip,
 
-                _id,
+                data: {
 
-            },
+                    _id,
 
-        });
+                },
 
-        console.log(result.data);
+            });
 
-        window.location.reload();
+            console.log(result.data);
+
+            //window.location.reload();
+
+        }
 
     }
+
+    catch(erro) {
+
+        console.log(erro);
+
+    }
+   
 
 }
 
