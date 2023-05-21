@@ -23,7 +23,7 @@ async function editTask({ _id, describe, equip }) {
     
         console.log(result.data);
        
-        //window.location.reload();
+        window.location.reload();
 
     }
 

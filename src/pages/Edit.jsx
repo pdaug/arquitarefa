@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Modal from "../components/Modal.jsx";
-import { submitEditTask } from "../functions/submits.jsx";
 import ContextTask from "../context/ContextTask.jsx";
+import { overflowHidden } from "../functions/overflow";
+import { submitEditTask } from "../functions/submits.jsx";
 
 function Edit() {
 
@@ -12,6 +13,8 @@ function Edit() {
     const { id, equip } = useParams();
 
     const { tasks, loaded } = useContext(ContextTask);
+
+    overflowHidden();
     
     const header = (<>
 

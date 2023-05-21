@@ -9,10 +9,13 @@ import Skeleton from "../components/Skeleton.jsx";
 import getTasks from "../functions/getTasks.jsx";
 import sections from "../constants/sections.jsx";
 import ContextTask from "../context/ContextTask.jsx";
+import { overflowAuto } from "../functions/overflow.jsx";
 
 function Dashboard() {
 
-    const { tasks, loaded } = getTasks();
+    const { tasks, loaded, setReloadState } = getTasks();
+
+    overflowAuto();
 
     return <>
 
@@ -20,7 +23,7 @@ function Dashboard() {
 
         { loaded ?
 
-            <ContextTask.Provider value={{ tasks, loaded }}>
+            <ContextTask.Provider value={{ tasks, loaded, setReloadState }}>
 
                 <Outlet/>
     

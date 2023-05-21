@@ -4,12 +4,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import Modal from "../components/Modal.jsx";
 import { submitAddTask } from "../functions/submits.jsx";
 import { getExecutor } from "../Storage/Executor.jsx";
+import { overflowHidden } from "../functions/overflow.jsx";
 
 function Add() {
 
     const navigate = useNavigate();
 
     const { equip } = useParams();
+
+    overflowHidden();
 
     const header = (<>
 

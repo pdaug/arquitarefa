@@ -2,10 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import Modal from "../components/Modal.jsx";
+import { overflowHidden } from "../functions/overflow.jsx";
 
 function Info() {
 
     const navigate = useNavigate();
+
+    overflowHidden();
 
     const header = (<>
 

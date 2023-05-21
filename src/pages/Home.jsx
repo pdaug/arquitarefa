@@ -3,10 +3,13 @@ import { useNavigate, Outlet } from "react-router-dom";
 
 import Nav from "../components/Nav";
 import { submitEnterEquip } from "../functions/submits";
+import { overflowAuto } from "../functions/overflow";
 
 export default function Home() {
     
     const navigate = useNavigate();
+
+    overflowAuto();
 
     return <>
     

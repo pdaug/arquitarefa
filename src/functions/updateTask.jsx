@@ -24,7 +24,7 @@ async function updateTask({ _id, category, equip }) {
     
         console.log(result.data);
        
-        //window.location.reload();    
+        window.location.reload();    
 
     }
 

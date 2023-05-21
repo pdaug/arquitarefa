@@ -24,9 +24,9 @@ async function addTask({ category, executor, describe, equip }) {
 
         });
 
-        //window.location.reload();
-        
         console.log(result.data);
+
+        window.location.reload();
 
     }
     catch(erro) {

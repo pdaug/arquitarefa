@@ -26,7 +26,7 @@ async function deleteTask({ _id, equip }) {
 
             console.log(result.data);
 
-            //window.location.reload();
+            window.location.reload();
 
         }
 
