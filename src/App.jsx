@@ -15,7 +15,7 @@ function App() {
 
       <Route index path="/" element={ <Home/> }/>
 
-      <Route path="/:equip" element={ <Dashboard/> }>
+      <Route path="/equip/:equip" element={ <Dashboard/> }>
 
         <Route path="add" element={ <Add/> }/>
 

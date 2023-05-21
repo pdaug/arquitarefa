@@ -8,7 +8,7 @@ function submitEnterEquip({ event, navigate }) {
 
     const equip = event.target.equip.value;
 
-    navigate("/" + equip);
+    navigate("/equip/" + equip);
 
 }
 
