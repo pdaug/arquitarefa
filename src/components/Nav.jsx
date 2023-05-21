@@ -15,7 +15,7 @@ function Nav() {
 
         <div className="container mx-auto">
 
-            <div className="flex items-center justify-between">
+            <div className="flex md:flex-row flex-col items-center justify-between md:gap-0 gap-[16px]">
 
                 <div className="text-2xl"> ARQUITAREFA </div>
 

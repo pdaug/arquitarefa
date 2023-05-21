@@ -15,7 +15,7 @@ function Dashboard({ tasks, updateTask, deleteTask }) {
 
         <div className="container my-4 mx-auto text-gray-800">
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-col md:flex-row">
 
                 <Section title="Dia" icon="ph ph-lightning" updateTask={ updateTask }> 
 
