@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home.jsx";
+import Info from "./pages/Info.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Add from "./pages/Add.jsx";
 import Edit from "./pages/Edit.jsx";
@@ -13,7 +14,11 @@ function App() {
 
     <Routes>
 
-      <Route index path="/" element={ <Home/> }/>
+      <Route path="/" element={ <Home/> }>
+
+        <Route path="info" element={ <Info/> }/>
+
+      </Route>
 
       <Route path="/equip/:equip" element={ <Dashboard/> }>
 

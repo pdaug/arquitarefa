@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Modal from "../components/Modal.jsx";
 import { submitAddTask } from "../functions/submits.jsx";
+import { getExecutor } from "../Storage/Executor.jsx";
 
 function Add() {
 
@@ -10,15 +11,15 @@ function Add() {
 
     const { equip } = useParams();
 
-    const header = <>
+    const header = (<>
 
         <i className="ph ph-check-square-offset"></i>
 
         <span> Adicionar tarefa </span> 
     
-    </>;
+    </>);
 
-    const content = <form className="flex flex-col gap-4 w-[360px]" onSubmit={ (event) => submitAddTask({ event, navigate, equip }) }>
+    const content = (<form className="flex flex-col gap-4 w-[360px]" onSubmit={ (event) => submitAddTask({ event, navigate, equip }) }>
 
         <select name="category" className="bg-gray-100 p-2 text-sm" required>
 
@@ -30,7 +31,7 @@ function Add() {
 
         </select>
 
-        <input className="bg-gray-100 p-2 text-sm" type="text" name="executor" placeholder="Executor" minLength={ 1 } maxLength={ 32 } required/>
+        <input className="bg-gray-100 p-2 text-sm" type="text" name="executor" placeholder="Executor" minLength={ 1 } maxLength={ 32 } defaultValue={ getExecutor() } required/>
 
         <textarea className="bg-gray-100 p-2 text-sm resize-none" type="text" name="describe" placeholder="Digite aqui uma breve descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
 
@@ -50,7 +51,7 @@ function Add() {
 
         </div>
 
-    </form>;
+    </form>);
 
     return <Modal header={ header } content={ content }/>
 

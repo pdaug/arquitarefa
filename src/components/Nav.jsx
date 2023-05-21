@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Nav() {
+
+    const navigate = useNavigate();
 
     return <div className="bg-white p-4">
 
@@ -12,11 +15,11 @@ function Nav() {
 
                 <div className="flex gap-4">
 
-                    <button className="flex items-center gap-2 bg-black text-white text-sm py-1 px-4"> 
+                    <button className="flex items-center gap-2 bg-black text-white text-sm py-1 px-4" onClick={ () => navigate("/info") }> 
                         
-                        <i className="ph ph-github-logo"></i>
+                        <i className="ph ph-info"></i>
 
-                        <span> GitHub </span>
+                        <span> Sobre </span>
 
                     </button>
 

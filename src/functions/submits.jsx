@@ -1,6 +1,7 @@
 import addTask from "../functions/addTask.jsx";
 import editTask from "../functions/editTask.jsx";
 import { categoryToNumber } from "../functions/categoryConverter.jsx";
+import { setExecutor } from "../Storage/Executor.jsx";
 
 function submitEnterEquip({ event, navigate }) {
 
@@ -19,6 +20,8 @@ async function submitAddTask({ event, navigate, equip }) {
     const category = event.target.category.value;
 
     const executor = event.target.executor.value;
+
+    setExecutor(executor);
 
     const describe = event.target.describe.value;
 

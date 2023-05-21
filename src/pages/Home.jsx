@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
 
 import Nav from "../components/Nav";
 import { submitEnterEquip } from "../functions/submits";
@@ -10,6 +10,8 @@ export default function Home() {
 
     return <>
     
+        <Outlet/>
+
         <Nav/>
 
         <div className="bg-white container p-4 my-4 mx-auto text-gray-800">
@@ -44,7 +46,13 @@ export default function Home() {
 
             <div className="flex-1 p-4">
 
-                <div className="text-normal"> Resumo </div>
+                <div className="text-normal"> 
+                
+                    <i className="ph ph-check-square-offset"></i>
+                
+                    <span> Plataforma </span> 
+                    
+                </div>
 
                 <div className="text-sm p-4">
 
@@ -52,35 +60,46 @@ export default function Home() {
 
                 </div>
 
-                <div className="text-normal"> Ideia </div>
+                <div className="text-normal"> 
+                    
+                    <i className="ph ph-users"></i>
+
+                    <span> Equipes </span> 
+                    
+                </div>
 
                 <div className="text-sm p-4">
 
-                    A ideia surgiu para me organizar no dia-a-dia de estudo, programação e atividades em geral. Antes eu usava o meu próprio contato no Whatsapp, mas com uma demanda alta não era possivel ver a prioridade e manter a qualidade nas entregas. Então me desafiei a criar uma tecnologia usando as minhas tecnologias favoritas com apenas o tempo livro dos finais de semana.
+                    Elabore as equipes para criar tarefas compartilhadas, consiga ter maior eficiência com bastante pessoas!
 
                 </div>
 
-                <div className="text-normal"> Tecnologias </div>
+                <div className="text-normal"> 
+
+                    <i className="ph ph-file"></i>
+
+                    <span> Tarefas </span>
+                    
+                </div>
 
                 <div className="text-sm p-4">
 
-                    <ul className="list-disc">
-                        <li> React </li>
-                        <li> Vite </li>
-                        <li> Tailwind CSS </li>
-                        <li> Phosphor Icons </li>
-                        <li> AOS Animate </li>
-                        <li> Serverless </li>
-                        <li> Vercel </li>
-                        <li> MongoDB </li>
-                    </ul>
+                    Atribua tarefas a executores para fazer o progresso fluir e concluir todas as metas dentro do prazo estimado.
 
                 </div>
 
-                <div className="text-normal"> Contribuição </div>
+                <div className="text-normal"> 
+                
+                    <i className="ph ph-user"></i>
+
+                    <span> Executor </span>
+                
+                </div>
 
                 <div className="text-sm p-4">
-                    Caso queira ajudar de alguma forma ou notificar por favor acessar o repositório do GitHub e/ou entre em contato comigo!
+
+                    Tenha maior liberdade em decidir quando será feito o termino das tarefas e defina as prioridades a qualquer instante.
+
                 </div>
 
             </div>
@@ -113,7 +132,7 @@ export default function Home() {
 
                 </div>
 
-                <div> Para grupos </div>
+                <div> Para equipes </div>
 
                 <div className="text-sm">
                     Colabore com as tarefas entre seus colegas usando o endereço de navegação compartilhado e tenha maior proveito sobre a ferramenta.

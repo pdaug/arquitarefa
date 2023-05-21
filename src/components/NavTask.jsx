@@ -31,7 +31,7 @@ function Nav() {
 
                     </button>
 
-                    <button className="flex items-center gap-2 bg-black text-white text-sm py-1 px-4" onClick={ () => window.location.reload() }> 
+                    <button className="flex items-center gap-2 bg-black text-white text-sm py-1 px-4" onClick={ () => navigate(0) }> 
                         
                         <i className="ph ph-arrow-clockwise"></i>
 

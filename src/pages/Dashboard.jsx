@@ -8,6 +8,7 @@ import Skeleton from "../components/Skeleton.jsx";
 
 import getTasks from "../functions/getTasks.jsx";
 import sections from "../constants/sections.jsx";
+import ContextTask from "../context/ContextTask.jsx";
 
 function Dashboard() {
 
@@ -15,52 +16,56 @@ function Dashboard() {
 
     return <>
 
-        <Outlet/>
-
         <NavTask/>
 
         { loaded ?
 
-            <div className="container my-4 mx-auto text-gray-800">
+            <ContextTask.Provider value={{ tasks, loaded }}>
 
-                <div className="flex gap-4 flex-col md:flex-row">
+                <Outlet/>
+    
+                <div className="container my-4 mx-auto text-gray-800">
 
-                    {
+                    <div className="flex gap-4 flex-col md:flex-row">
 
-                        sections.map(function(section) {
+                        {
 
-                            return <Section key={ crypto.randomUUID() } title={ section.title } icon={ section.icon }>
+                            sections.map(function(section) {
 
-                                { tasks.length > 0 ?
-                                    
-                                    tasks.map(function(task) {
+                                return <Section key={ crypto.randomUUID() } title={ section.title } icon={ section.icon }>
 
-                                        if (task.category === section.category)
+                                    { tasks.length > 0 ?
+                                        
+                                        tasks.map(function(task) {
 
-                                            return <Card key={ crypto.randomUUID() } task={ task }/>
+                                            if (task.category === section.category)
 
-                                    })
+                                                return <Card key={ crypto.randomUUID() } task={ task }/>
 
-                                :
+                                        })
 
-                                    <div className="text-center text-xs text-gray-500">
+                                    :
 
-                                        <div> Campo está sem tarefas </div>
+                                        <div className="text-center text-xs text-gray-500">
 
-                                    </div>
+                                            <div> Campo está sem tarefas </div>
 
-                                }
+                                        </div>
 
-                            </Section>
+                                    }
 
-                        })
+                                </Section>
+
+                            })
 
 
-                    }
+                        }
+
+                    </div>
 
                 </div>
 
-            </div>
+            </ContextTask.Provider>
 
         :
 
