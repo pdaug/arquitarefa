@@ -16,9 +16,7 @@ function Add() {
 
     const header = (<>
 
-        <i className="ph ph-check-square-offset"></i>
-
-        <span> Adicionar tarefa </span> 
+        <i className="ph-bold ph-check-square-offset"></i>
     
     </>);
 
@@ -40,13 +38,13 @@ function Add() {
 
         <div className="flex justify-center gap-4">
 
-            <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-1 px-4"> 
+            <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-2 px-4"> 
             
                 <span> Adicionar </span>  
             
             </button>
 
-            <button type="button" onClick={ () => navigate(-1) } className="bg-gray-100 text-sm py-1 px-4"> 
+            <button type="button" onClick={ () => navigate(-1) } className="bg-gray-100 text-sm py-2 px-4"> 
 
                 <span> Voltar </span> 
             

@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import deleteTask from "../functions/deleteTask.jsx";
 import { Drag } from "../functions/drag.jsx";
-import { categoryToString } from "../functions/categoryConverter.jsx";
 
 function Card(props) {
 
@@ -15,7 +14,7 @@ function Card(props) {
 
     return <div onDragStart={ Drag } id={ props.task._id } onDoubleClick={ () => navigate(editURL) } draggable>
 
-        <div className="flex flex-col bg-gray-100 p-2 gap-2">
+        <div className="flex flex-col bg-gray-200 p-4 gap-2">
 
             <div className="text-justify"> { props.task.describe } </div>
             
@@ -28,14 +27,10 @@ function Card(props) {
                 <span> { new Date(props.task.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }) } </span> 
 
                 <span> &bull; </span>
-
-                <span> { categoryToString({ number: props.task.category }) } </span> 
-
-            </div>
-
-            <div className="flex text-gray-500 text-xs gap-2">
-
+                
                 <span className="cursor-pointer" onClick={ async () => await deleteTask({ _id: props.task._id, equip }) }> Concluir </span>
+
+                <span> &bull; </span>
 
                 <span className="cursor-pointer" onClick={ () => navigate(editURL) }> Editar </span> 
 

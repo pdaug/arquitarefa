@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import Section from "../components/Section.jsx";
 import Card from "../components/Card.jsx";
-import NavTask from "../components/NavTask.jsx";
+import Nav from "../components/Nav.jsx";
 import Skeleton from "../components/Skeleton.jsx";
 
 import getTasks from "../functions/getTasks.jsx";
@@ -19,7 +19,7 @@ function Dashboard() {
 
     return <>
 
-        <NavTask/>
+        <Nav/>
 
         { loaded ?
 
@@ -35,7 +35,7 @@ function Dashboard() {
 
                             sections.map(function(section) {
 
-                                return <Section key={ crypto.randomUUID() } title={ section.title } icon={ section.icon }>
+                                return <Section key={ crypto.randomUUID() } icon={ section.icon }>
 
                                     { tasks.length > 0 ?
                                         
@@ -49,9 +49,9 @@ function Dashboard() {
 
                                     :
 
-                                        <div className="text-center text-xs text-gray-500">
+                                        <div className="text-center p-4 text-xs text-gray-500">
 
-                                            <div> Campo está sem tarefas </div>
+                                            <div> Vazio </div>
 
                                         </div>
 

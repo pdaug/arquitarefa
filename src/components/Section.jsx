@@ -12,8 +12,6 @@ function Section(props) {
         <div className="flex items-center justify-center gap-2"> 
         
             <i className={ props.icon }></i>
-
-            <span> { props.title } </span>
             
         </div>
 

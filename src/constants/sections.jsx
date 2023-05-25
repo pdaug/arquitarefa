@@ -1,20 +1,17 @@
 const sections = [
     
     {
-        title: "Dia",
-        icon: "ph ph-lightning",
+        icon: "ph-bold ph-lightning",
         category: 1
     },
 
     {
-        title: "Semana",
-        icon: "ph ph-clock",
+        icon: "ph-bold ph-clock",
         category: 2
     },
 
     {
-        title: "Mês",
-        icon: "ph ph-calendar-blank",
+        icon: "ph-bold ph-calendar-blank",
         category: 3
     },
 

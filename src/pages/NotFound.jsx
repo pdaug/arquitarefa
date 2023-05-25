@@ -8,19 +8,13 @@ export default function NotFound() {
     
         <Nav/>
 
-        <div className="container my-4 mx-auto text-gray-800">
+        <div className="container my-4 mx-auto text-gray-800 p-4 text-center">
 
-            <div className="bg-white p-4 text-center">
+            <div className="text-4xl">
 
-                <div className="text-4xl">
+                <i className="ph ph-warning"></i>
 
-                    <i className="ph ph-warning"></i>
-
-                </div>
-
-                <div> Ops, infelizmente </div>
-
-                <div> Não conseguimos encontrar a página! </div>
+                <div> 404 Not found! </div>
 
             </div>
 

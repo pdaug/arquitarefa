@@ -18,9 +18,7 @@ function Edit() {
     
     const header = (<>
 
-        <i className="ph ph-pencil-simple-line"></i>
-
-        <span> Editar tarefa </span> 
+        <i className="ph-bold ph-pencil-simple-line"></i>
 
     </>);
 
@@ -30,13 +28,13 @@ function Edit() {
 
         <div className="flex justify-center gap-4">
 
-            <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-1 px-4"> 
+            <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-2 px-4"> 
             
                 <span> Editar </span>
             
             </button>
 
-            <button type="button" onClick={ () => navigate(-1) } className="bg-gray-100 text-sm py-1 px-4"> 
+            <button type="button" onClick={ () => navigate(-1) } className="bg-gray-100 text-sm py-2 px-4"> 
 
                 <span> Cancelar </span> 
             
