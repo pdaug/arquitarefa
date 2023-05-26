@@ -1,7 +1,7 @@
 import axios from "axios";
 import api from "../constants/api.jsx";
 
-async function editTask({ _id, describe, equip }) {
+async function editTask({ _id, describe, equip, setTasks }) {
     
     try {
 
@@ -21,10 +21,8 @@ async function editTask({ _id, describe, equip }) {
     
         });
     
-        console.log(result.data);
-       
-        window.location.reload();
-
+        setTasks(result.data);
+    
     }
 
     catch(erro) {

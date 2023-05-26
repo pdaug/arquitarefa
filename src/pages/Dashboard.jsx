@@ -13,7 +13,7 @@ import { overflowAuto } from "../functions/overflow.jsx";
 
 function Dashboard() {
 
-    const { tasks, loaded, setReloadState } = getTasks();
+    const { tasks, loaded, setTasks, setReloadState } = getTasks();
 
     overflowAuto();
 
@@ -23,7 +23,7 @@ function Dashboard() {
 
         { loaded ?
 
-            <ContextTask.Provider value={{ tasks, loaded, setReloadState }}>
+            <ContextTask.Provider value={{ tasks, loaded, setTasks, setReloadState }}>
 
                 <Outlet/>
     
@@ -35,7 +35,7 @@ function Dashboard() {
 
                             sections.map(function(section) {
 
-                                return <Section key={ crypto.randomUUID() } icon={ section.icon }>
+                                return <Section key={ crypto.randomUUID() } icon={ section.icon } category={ section.category }>
 
                                     { tasks.length > 0 ?
                                         

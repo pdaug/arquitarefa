@@ -2,8 +2,8 @@ import axios from "axios";
 
 import api from "../constants/api.jsx";
 
-async function addTask({ category, executor, describe, equip }) {
-
+async function addTask({ category, executor, describe, equip, setTasks }) {
+    
     try {
 
         const result = await axios({
@@ -24,11 +24,10 @@ async function addTask({ category, executor, describe, equip }) {
 
         });
 
-        console.log(result.data);
-
-        window.location.reload();
+        setTasks(result.data);
 
     }
+
     catch(erro) {
 
         console.log(erro);

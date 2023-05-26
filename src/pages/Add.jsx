@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import ContextTask from "../context/ContextTask.jsx";
 import Modal from "../components/Modal.jsx";
 import { submitAddTask } from "../functions/submits.jsx";
 import { getExecutor } from "../Storage/Executor.jsx";
@@ -12,6 +13,8 @@ function Add() {
 
     const { equip } = useParams();
 
+    const { setTasks } = useContext(ContextTask);
+
     overflowHidden();
 
     const header = (<>
@@ -20,31 +23,31 @@ function Add() {
     
     </>);
 
-    const content = (<form className="flex flex-col gap-4 w-[360px]" onSubmit={ (event) => submitAddTask({ event, navigate, equip }) }>
+    const content = (<form className="flex flex-col gap-4 w-full" onSubmit={ (event) => submitAddTask({ event, navigate, equip, setTasks }) }>
 
-        <select name="category" className="bg-gray-100 p-2 text-sm" required>
+        <select name="category" className="bg-gray-100 p-2 text-sm outline-none rounded-sm" required>
 
-            <option value="Dia"> Para hoje </option>
+            <option value="1"> Inadiável </option>
 
-            <option value="Semana"> Esta semana </option>
+            <option value="2"> Neutra </option>
 
-            <option value="Mês"> Este mês </option>
+            <option value="3"> Adiável </option>
 
         </select>
 
-        <input className="bg-gray-100 p-2 text-sm" type="text" name="executor" placeholder="Executor" minLength={ 1 } maxLength={ 32 } defaultValue={ getExecutor() } required/>
+        <input className="bg-gray-100 p-2 text-sm outline-none rounded-sm" type="text" name="executor" placeholder="Executor" minLength={ 1 } maxLength={ 32 } defaultValue={ getExecutor() } required/>
 
-        <textarea className="bg-gray-100 p-2 text-sm resize-none" type="text" name="describe" placeholder="Digite aqui uma breve descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
+        <textarea className="bg-gray-100 p-2 text-sm resize-none outline-none rounded-sm" type="text" name="describe" placeholder="Digite aqui uma breve descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
 
         <div className="flex justify-center gap-4">
 
-            <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-2 px-4"> 
+            <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-2 px-4 rounded-sm"> 
             
                 <span> Adicionar </span>  
             
             </button>
 
-            <button type="button" onClick={ () => navigate(-1) } className="bg-gray-100 text-sm py-2 px-4"> 
+            <button type="button" onClick={ () => navigate(-1) } className="bg-gray-100 text-sm py-2 px-4 rounded-sm"> 
 
                 <span> Voltar </span> 
             

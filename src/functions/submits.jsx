@@ -1,6 +1,5 @@
 import addTask from "../functions/addTask.jsx";
 import editTask from "../functions/editTask.jsx";
-import { categoryToNumber } from "../functions/categoryConverter.jsx";
 import { setExecutor } from "../Storage/Executor.jsx";
 
 function submitEnterEquip({ event, navigate }) {
@@ -13,7 +12,7 @@ function submitEnterEquip({ event, navigate }) {
 
 }
 
-async function submitAddTask({ event, navigate, equip }) {
+async function submitAddTask({ event, navigate, equip, setTasks }) {
 
     event.preventDefault();
 
@@ -25,19 +24,19 @@ async function submitAddTask({ event, navigate, equip }) {
 
     const describe = event.target.describe.value;
 
-    await addTask({ category: categoryToNumber({ string: category }), executor, describe, equip });
+    await addTask({ category: parseInt(category), executor, describe, equip, setTasks});
 
     navigate(-1);
 
 }
 
-async function submitEditTask({ event, navigate, id, equip }) {
+async function submitEditTask({ event, navigate, id, equip, setTasks }) {
 
     event.preventDefault();
 
     const describe = event.target.describe.value;
     
-    await editTask({ _id: id, describe, equip });
+    await editTask({ _id: id, describe, equip, setTasks });
 
     navigate(-1);
 

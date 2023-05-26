@@ -2,7 +2,7 @@ import axios from "axios";
 
 import api from "../constants/api.jsx";
 
-async function deleteTask({ _id, equip }) {
+async function deleteTask({ _id, equip, setTasks }) {
 
     try {
 
@@ -24,9 +24,7 @@ async function deleteTask({ _id, equip }) {
 
             });
 
-            console.log(result.data);
-
-            window.location.reload();
+            setTasks(result.data);
 
         }
 

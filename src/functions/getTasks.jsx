@@ -52,6 +52,8 @@ function getTasks() {
         
         tasks,
 
+        setTasks,
+
         loaded
     
     };

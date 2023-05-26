@@ -12,7 +12,7 @@ function Edit() {
 
     const { id, equip } = useParams();
 
-    const { tasks, loaded } = useContext(ContextTask);
+    const { tasks, setTasks, loaded } = useContext(ContextTask);
 
     overflowHidden();
     
@@ -22,19 +22,29 @@ function Edit() {
 
     </>);
 
-    const content = (<form className="flex flex-col gap-4 w-[360px]" onSubmit={ (event) => submitEditTask({ event, navigate, id, equip }) }>
+    const content = (<form className="flex flex-col gap-4" onSubmit={ (event) => submitEditTask({ event, navigate, id, equip, setTasks }) }>
 
-        <textarea className="bg-gray-100 p-2 text-sm resize-none" type="text" name="describe" placeholder="Edite aqui a descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } defaultValue={ loaded ? tasks.find(item => item._id === id).describe : "" } required></textarea>
+        <select name="category" className="bg-gray-100 p-2 text-sm outline-none rounded-sm" defaultValue={ loaded ? tasks.find(item => item._id === id).category : "" } required>
+
+            <option value="1"> Inadiável </option>
+
+            <option value="2"> Neutra </option>
+
+            <option value="3"> Adiável </option>
+
+        </select>
+
+        <textarea className="bg-gray-100 p-2 text-sm resize-none outline-none rounded-sm" type="text" name="describe" placeholder="Edite aqui a descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } defaultValue={ loaded ? tasks.find(item => item._id === id).describe : "" } required></textarea>
 
         <div className="flex justify-center gap-4">
 
-            <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-2 px-4"> 
+            <button type="submit" className="flex items-center gap-2 bg-black text-white text-sm py-2 px-4 rounded-sm"> 
             
                 <span> Editar </span>
             
             </button>
 
-            <button type="button" onClick={ () => navigate(-1) } className="bg-gray-100 text-sm py-2 px-4"> 
+            <button type="button" onClick={ () => navigate(-1) } className="bg-gray-100 text-sm py-2 px-4 rounded-sm"> 
 
                 <span> Cancelar </span> 
             

@@ -2,7 +2,7 @@ import axios from "axios";
 
 import api from "../constants/api.jsx";
 
-async function updateTask({ _id, category, equip }) {
+async function updateTask({ _id, category, equip, setTasks }) {
 
     try {
 
@@ -22,9 +22,7 @@ async function updateTask({ _id, category, equip }) {
     
         });
     
-        console.log(result.data);
-       
-        window.location.reload();    
+        setTasks(result.data);
 
     }
 

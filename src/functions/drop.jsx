@@ -1,5 +1,4 @@
 import updateTask from "../functions/updateTask.jsx";
-import { categoryToNumber } from "../functions/categoryConverter.jsx";
 
 function AllowDrop(event) {
 
@@ -7,7 +6,7 @@ function AllowDrop(event) {
 
 }
 
-async function DropUpdate({ event, title, equip }) {
+async function DropUpdate({ event, category, equip, setTasks }) {
 
     event.preventDefault();
 
@@ -15,7 +14,7 @@ async function DropUpdate({ event, title, equip }) {
 
     if (event.target.id === "section") 
 
-        await updateTask({ _id, category: categoryToNumber({ string: title }), equip });
+        await updateTask({ _id, category: parseInt(category), equip, setTasks });
 
 }
 
