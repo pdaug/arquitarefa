@@ -6,27 +6,21 @@ async function deleteTask({ _id, equip, setTasks }) {
 
     try {
 
-        const answer = confirm("Deseja concluir a segunte tarefa?");
+        const result = await axios({
 
-        if (answer) {
+            method: "DELETE",
 
-            const result = await axios({
+            url: api + equip,
 
-                method: "DELETE",
+            data: {
 
-                url: api + equip,
+                _id,
 
-                data: {
+            },
 
-                    _id,
+        });
 
-                },
-
-            });
-
-            setTasks(result.data);
-
-        }
+        setTasks(result.data);
 
     }
 

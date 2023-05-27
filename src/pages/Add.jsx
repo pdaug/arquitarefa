@@ -37,7 +37,7 @@ function Add() {
 
         <input className="bg-gray-100 p-2 text-sm outline-none rounded-sm" type="text" name="executor" placeholder="Executor" minLength={ 1 } maxLength={ 32 } defaultValue={ getExecutor() } required/>
 
-        <textarea className="bg-gray-100 p-2 text-sm resize-none outline-none rounded-sm" type="text" name="describe" placeholder="Digite aqui uma breve descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
+        <textarea className="bg-gray-100 p-2 text-sm resize-none outline-none rounded-sm" type="text" name="describe" placeholder="Descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } required></textarea>
 
         <div className="flex justify-center gap-4">
 

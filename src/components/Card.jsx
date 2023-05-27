@@ -1,15 +1,9 @@
-import React, { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import ContextTask from "../context/ContextTask.jsx";
-import deleteTask from "../functions/deleteTask.jsx";
 import { Drag } from "../functions/drag.jsx";
 
 function Card(props) {
-
-    const { equip } = useParams();
-
-    const { setTasks } = useContext(ContextTask);
 
     const navigate = useNavigate();
 
@@ -29,7 +23,7 @@ function Card(props) {
 
                 <span> &bull; </span>
                 
-                <span className="cursor-pointer" onClick={ async () => await deleteTask({ _id: props.task._id, equip, setTasks }) }> Concluir </span>
+                <span className="cursor-pointer" onClick={ async () => navigate("./confirm/" + props.task._id) }> Concluir </span>
 
                 <span> &bull; </span>
 

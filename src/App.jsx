@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home.jsx";
-import Info from "./pages/Info.jsx";
+import Confirm from "./pages/Confirm.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Add from "./pages/Add.jsx";
 import Edit from "./pages/Edit.jsx";
@@ -14,13 +14,11 @@ function App() {
 
     <Routes>
 
-      <Route path="/" element={ <Home/> }>
-
-        <Route path="info" element={ <Info/> }/>
-
-      </Route>
+      <Route path="/" element={ <Home/> }/>
 
       <Route path="/equip/:equip" element={ <Dashboard/> }>
+
+        <Route path="confirm/:id" element={ <Confirm/> }/>
 
         <Route path="add" element={ <Add/> }/>
 

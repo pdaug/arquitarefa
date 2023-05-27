@@ -6,8 +6,4 @@ function Drag(event) {
 
 }
 
-export {
-
-    Drag
-
-};
+export { Drag };

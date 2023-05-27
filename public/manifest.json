@@ -2,6 +2,7 @@
     "name": "ARQUITAREFA - Arquitete as suas tarefas em equipe.",
     "short_name": "Arquitarefa",
     "description": "O Arquitarefa é uma plataforma simples para arquitetar as atividades pendentes, gerenciar as tarefas em equipes e construir uma rotina programada usando as operações básicas e interações simples.",
+    "orientation": "any",
     "icons": [
         {
             "src": "icon16.png",
@@ -43,27 +44,27 @@
     "screenshots": [
         {
             "src": "screenshot1.png",
-            "sizes": "1200x800",
+            "sizes": "1280x800",
             "type": "image/png",
-            "label": "Arquitete as suas tarefas e organize em equipes."
+            "label": "Arquitete as suas tarefas em equipe."
         },
         {
             "src": "screenshot2.png",
-            "sizes": "1200x800",
+            "sizes": "530x800",
             "type": "image/png",
-            "label": "Coloque em ordem de prioridade as tarefas."
+            "label": "Organização."
         },
         {
             "src": "screenshot3.png",
             "sizes": "1200x800",
             "type": "image/png",
-            "label": "Edite em qualquer dispositivo as tarefas."
+            "label": "Praticidade."
         }
     ],
     "start_url": "/",
     "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff",
+    "theme_color": "#f3f4f6",
+    "background_color": "#f3f4f6",
     "categories": [
         "education",
         "entertainment",

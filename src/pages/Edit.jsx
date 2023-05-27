@@ -34,7 +34,7 @@ function Edit() {
 
         </select>
 
-        <textarea className="bg-gray-100 p-2 text-sm resize-none outline-none rounded-sm" type="text" name="describe" placeholder="Edite aqui a descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } defaultValue={ loaded ? tasks.find(item => item._id === id).describe : "" } required></textarea>
+        <textarea className="bg-gray-100 p-2 text-sm resize-none outline-none rounded-sm" type="text" name="describe" placeholder="Descrição da tarefa..." minLength={ 8 } maxLength={ 256 } autoComplete="false" rows={ 4 } defaultValue={ loaded ? tasks.find(item => item._id === id).describe : "" } required></textarea>
 
         <div className="flex justify-center gap-4">
 

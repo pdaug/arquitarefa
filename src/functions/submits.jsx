@@ -1,5 +1,6 @@
 import addTask from "../functions/addTask.jsx";
 import editTask from "../functions/editTask.jsx";
+import deleteTask from "../functions/deleteTask.jsx";
 import { setExecutor } from "../Storage/Executor.jsx";
 
 function submitEnterEquip({ event, navigate }) {
@@ -42,7 +43,19 @@ async function submitEditTask({ event, navigate, id, equip, setTasks }) {
 
 }
 
+async function submitDeleteTask({ event, navigate, id, equip, setTasks }) {
+
+    event.preventDefault();
+
+    await deleteTask({ _id: id, equip, setTasks });
+
+    navigate(-1);
+
+}
+
 export {
+
+    submitDeleteTask,
 
     submitEnterEquip,
 
