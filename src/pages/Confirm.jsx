@@ -24,7 +24,7 @@ function Info() {
 
     const content = (<form className="flex flex-col gap-4" onSubmit={ (event) => submitDeleteTask({ event, navigate, id, equip, setTasks }) }>
 
-        <textarea className="bg-gray-100 p-2 text-sm resize-none outline-none rounded-sm" rows={ 4 } defaultValue={ loaded ? tasks.find(item => item._id === id).describe : "" } disabled></textarea>
+        <textarea className="bg-gray-100 p-2 text-sm resize-none outline-none rounded-sm" rows={ 4 } defaultValue={ loaded ? tasks.find(item => item._id === id)?.describe : "" } disabled></textarea>
 
         <div className="flex justify-center gap-4">
 
